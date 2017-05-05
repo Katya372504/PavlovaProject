@@ -66,6 +66,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -82,6 +83,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="mini_1.ico" />
+    <None Include="Resources\yp_CfDYIdPY.jpg" />
+    <None Include="Resources\X56NJQmYDaI.jpg" />
+    <None Include="Resources\yM-y5pHO898.jpg" />
+    <None Include="Resources\7mrkmB6Ncjg.jpg" />
+    <None Include="Resources\r9g1w9GZhEI.jpg" />
+    <None Include="Resources\8nsHkrRnWcY.jpg" />
+    <None Include="Resources\M6FAc6ArZBA.jpg" />
+    <None Include="Resources\CvwQ-BnDD3s.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Wikipedia.Net-master\Wikipedia.NET\Wikipedia.NET.csproj">
