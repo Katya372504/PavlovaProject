@@ -30,9 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.SearchText = new System.Windows.Forms.TextBox();
-            this.SearchButton = new System.Windows.Forms.Button();
+            this.SearchProcessButton = new System.Windows.Forms.Button();
             this.MenuPanel = new System.Windows.Forms.Panel();
-            this.WebResult = new System.Windows.Forms.WebBrowser();
             this.Title7 = new System.Windows.Forms.PictureBox();
             this.Title6 = new System.Windows.Forms.PictureBox();
             this.Title5 = new System.Windows.Forms.PictureBox();
@@ -43,6 +42,9 @@
             this.PictureLeft = new System.Windows.Forms.PictureBox();
             this.PictureRight = new System.Windows.Forms.PictureBox();
             this.Title8 = new System.Windows.Forms.PictureBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.RussianSearchButton = new System.Windows.Forms.Button();
+            this.EnglishSearchButton = new System.Windows.Forms.Button();
             this.MenuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Title7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Title6)).BeginInit();
@@ -67,33 +69,27 @@
             this.SearchText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.SearchText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchText_KeyDown);
             // 
-            // SearchButton
+            // SearchProcessButton
             // 
-            this.SearchButton.Location = new System.Drawing.Point(386, 25);
-            this.SearchButton.Name = "SearchButton";
-            this.SearchButton.Size = new System.Drawing.Size(75, 23);
-            this.SearchButton.TabIndex = 1;
-            this.SearchButton.Text = "Найти";
-            this.SearchButton.UseVisualStyleBackColor = true;
-            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
+            this.SearchProcessButton.Location = new System.Drawing.Point(384, 25);
+            this.SearchProcessButton.Name = "SearchProcessButton";
+            this.SearchProcessButton.Size = new System.Drawing.Size(75, 23);
+            this.SearchProcessButton.TabIndex = 1;
+            this.SearchProcessButton.Text = "Найти";
+            this.SearchProcessButton.UseVisualStyleBackColor = true;
+            this.SearchProcessButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // MenuPanel
             // 
+            this.MenuPanel.Controls.Add(this.EnglishSearchButton);
+            this.MenuPanel.Controls.Add(this.RussianSearchButton);
             this.MenuPanel.Controls.Add(this.SearchText);
-            this.MenuPanel.Controls.Add(this.SearchButton);
+            this.MenuPanel.Controls.Add(this.SearchProcessButton);
             this.MenuPanel.ImeMode = System.Windows.Forms.ImeMode.On;
             this.MenuPanel.Location = new System.Drawing.Point(213, 123);
             this.MenuPanel.Name = "MenuPanel";
             this.MenuPanel.Size = new System.Drawing.Size(825, 51);
             this.MenuPanel.TabIndex = 2;
-            // 
-            // WebResult
-            // 
-            this.WebResult.Location = new System.Drawing.Point(333, 191);
-            this.WebResult.MinimumSize = new System.Drawing.Size(20, 20);
-            this.WebResult.Name = "WebResult";
-            this.WebResult.Size = new System.Drawing.Size(610, 407);
-            this.WebResult.TabIndex = 3;
             // 
             // Title7
             // 
@@ -195,12 +191,41 @@
             this.Title8.TabIndex = 13;
             this.Title8.TabStop = false;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(307, 191);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(652, 407);
+            this.textBox1.TabIndex = 14;
+            // 
+            // RussianSearchButton
+            // 
+            this.RussianSearchButton.Location = new System.Drawing.Point(3, 25);
+            this.RussianSearchButton.Name = "RussianSearchButton";
+            this.RussianSearchButton.Size = new System.Drawing.Size(135, 23);
+            this.RussianSearchButton.TabIndex = 2;
+            this.RussianSearchButton.Text = "Русский поиск";
+            this.RussianSearchButton.UseVisualStyleBackColor = true;
+            this.RussianSearchButton.Click += new System.EventHandler(this.RussianSearchButton_Click);
+            // 
+            // EnglishSearchButton
+            // 
+            this.EnglishSearchButton.Location = new System.Drawing.Point(682, 25);
+            this.EnglishSearchButton.Name = "EnglishSearchButton";
+            this.EnglishSearchButton.Size = new System.Drawing.Size(140, 23);
+            this.EnglishSearchButton.TabIndex = 3;
+            this.EnglishSearchButton.Text = "Английский поиск";
+            this.EnglishSearchButton.UseVisualStyleBackColor = true;
+            this.EnglishSearchButton.Click += new System.EventHandler(this.EnglishSearchButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1264, 682);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.Title8);
             this.Controls.Add(this.Title7);
             this.Controls.Add(this.Title6);
@@ -211,7 +236,6 @@
             this.Controls.Add(this.Title1);
             this.Controls.Add(this.PictureLeft);
             this.Controls.Add(this.PictureRight);
-            this.Controls.Add(this.WebResult);
             this.Controls.Add(this.MenuPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -232,15 +256,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.PictureRight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Title8)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.TextBox SearchText;
-        private System.Windows.Forms.Button SearchButton;
+        private System.Windows.Forms.Button SearchProcessButton;
         private System.Windows.Forms.Panel MenuPanel;
-        private System.Windows.Forms.WebBrowser WebResult;
         private System.Windows.Forms.PictureBox PictureRight;
         private System.Windows.Forms.PictureBox PictureLeft;
         private System.Windows.Forms.PictureBox Title1;
@@ -251,6 +275,9 @@
         private System.Windows.Forms.PictureBox Title6;
         private System.Windows.Forms.PictureBox Title7;
         private System.Windows.Forms.PictureBox Title8;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button EnglishSearchButton;
+        private System.Windows.Forms.Button RussianSearchButton;
     }
 }
 

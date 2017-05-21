@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WikipediaNET;
+using HtmlAgilityPack;
+
 
 namespace WindowsFormsPavlovaProject
 {
@@ -18,14 +20,41 @@ namespace WindowsFormsPavlovaProject
             InitializeComponent();
         }
 
+        Wikipedia wikipedia = new Wikipedia();
        
-        private void SearchButton_Click(object sender, EventArgs e)
+        private void  SearchButton_Click(object sender, EventArgs e)
         {
-            Wikipedia wikipedia = new Wikipedia();
+            textBox1.Clear();
             wikipedia.Limit = 1;
             WikipediaNET.Objects.QueryResult results = wikipedia.Search(SearchText.Text);
             WikipediaNET.Objects.Search link = results.Search[0];
-            WebResult.Url = link.Url;
+            
+            string html = link.Url.OriginalString;
+            HtmlAgilityPack.HtmlDocument HD = new HtmlAgilityPack.HtmlDocument();
+            var web = new HtmlWeb
+            {
+                AutoDetectEncoding = false,
+                OverrideEncoding = Encoding.UTF8,
+            };
+            HD = web.Load(html);                    //Скачиваем всю HTML страницу
+
+            HtmlNodeCollection NoAltElements;
+            NoAltElements = HD.DocumentNode.SelectNodes("//div[@class='mw-content-ltr']/p");
+                                                                                             
+
+            string outputText = "";
+            // проверка на наличие найденных узлов
+            if (NoAltElements != null)
+            {
+                foreach (HtmlNode HN in NoAltElements)
+                {
+                    //Получаем строчки
+                    outputText = HN.InnerText;
+                    textBox1.AppendText(outputText);
+                }
+          
+            }
+            
         }
 
         private void SearchText_KeyDown(object sender, KeyEventArgs e)
@@ -34,6 +63,18 @@ namespace WindowsFormsPavlovaProject
             {
                 SearchButton_Click(this, new EventArgs());
             }
+        }
+
+        private void RussianSearchButton_Click(object sender, EventArgs e)
+        {
+            wikipedia.Language = WikipediaNET.Enums.Language.Russian;
+            SearchText.Text = "Введите запрос (Русскоязычный поиск)";
+        }
+
+        private void EnglishSearchButton_Click(object sender, EventArgs e)
+        {
+            wikipedia.Language = WikipediaNET.Enums.Language.English;
+            SearchText.Text = "Введите запрос (Анголязычный поиск)";
         }
 
        
