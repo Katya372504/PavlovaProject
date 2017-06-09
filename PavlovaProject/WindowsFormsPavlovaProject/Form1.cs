@@ -24,7 +24,7 @@ namespace WindowsFormsPavlovaProject
        
         private void  SearchButton_Click(object sender, EventArgs e)
         {
-            textBox1.Clear();
+            TextBox.Clear();
             wikipedia.Limit = 1;
             WikipediaNET.Objects.QueryResult results = wikipedia.Search(SearchText.Text);
             WikipediaNET.Objects.Search link = results.Search[0];
@@ -40,6 +40,7 @@ namespace WindowsFormsPavlovaProject
 
             HtmlNodeCollection NoAltElements;
             NoAltElements = HD.DocumentNode.SelectNodes("//div[@class='mw-content-ltr']/p");
+            
                                                                                              
 
             string outputText = "";
@@ -50,7 +51,7 @@ namespace WindowsFormsPavlovaProject
                 {
                     //Получаем строчки
                     outputText = HN.InnerText;
-                    textBox1.AppendText(outputText);
+                    TextBox.AppendText(outputText);
                 }
           
             }
@@ -77,6 +78,27 @@ namespace WindowsFormsPavlovaProject
             SearchText.Text = "Введите запрос (Анголязычный поиск)";
         }
 
+        private void TextSearchButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TextBox.Select(TextBox.Find(SearchBox.Text), SearchBox.Text.Length);
+                TextBox.SelectionBackColor = Color.Green;
+            }
+
+            catch
+            {
+
+            }
+        }
+
+        private void ResetSearchButton_Click(object sender, EventArgs e)
+        {
+            TextBox.Select(TextBox.SelectionStart, TextBox.SelectionLength);
+            TextBox.SelectionBackColor = Color.White; 
+        }
+        
+
        
     }
-}
+} 
